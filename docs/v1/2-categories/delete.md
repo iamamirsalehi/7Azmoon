@@ -1,11 +1,9 @@
 # **Get List Of Users**
 
-## PUT ``/v1/users/change-password``
+## DELETE ``/v1/users``
 
-**POST Params**:
+**Query Params**:
 - ``id`` : user id
-- ``password`` : user password
-- ``password_reapet`` : password reapet 
 
 <br><hr><br>
 
@@ -16,6 +14,6 @@
 {
     "success" : false ,   // boolean
     "message" : "",       // string
-    "data" : {},          // updated user data
+    "data" : null,        
 }
 ```

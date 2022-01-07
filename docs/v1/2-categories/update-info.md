@@ -1,11 +1,12 @@
 # **Get List Of Users**
 
-## PUT ``/v1/users/change-password``
+## PUT ``/v1/users``
 
 **POST Params**:
 - ``id`` : user id
-- ``password`` : user password
-- ``password_reapet`` : password reapet 
+- ``fullname`` : user fullname
+- ``email`` :  user email
+- ``mobile`` :  user mobile
 
 <br><hr><br>
 
