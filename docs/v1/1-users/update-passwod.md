@@ -1,6 +1,6 @@
 # **Get List Of Users**
 
-## PUT ``/v1/users/change-password``
+## PUT ``/api/v1/users/change-password``
 
 **POST Params**:
 - ``id`` : user id

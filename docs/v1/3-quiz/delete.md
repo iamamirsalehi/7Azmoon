@@ -1,12 +1,11 @@
-# **Get List Of Users**
+# **Delete Single quiz**
 
-## DELETE ``/api/v1/users``
+## DELETE ``/api/v1/quizzes``
 
 **Query Params**:
-- ``id`` : user id
+- ``id`` : quiz id
 
 <br><hr><br>
-
 
 ## ``JSON`` Response Format
 

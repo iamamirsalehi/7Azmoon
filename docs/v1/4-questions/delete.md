@@ -1,12 +1,11 @@
-# **Get List Of Users**
+# **Delete Single question**
 
-## DELETE ``/api/v1/users``
+## DELETE ``/api/v1/questions``
 
 **Query Params**:
-- ``id`` : user id
+- ``id`` : question id
 
 <br><hr><br>
-
 
 ## ``JSON`` Response Format
 

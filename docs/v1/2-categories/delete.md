@@ -1,12 +1,11 @@
-# **Get List Of Users**
+# **Delete Single Category**
 
-## DELETE ``/v1/users``
+## DELETE ``/api/v1/categories``
 
 **Query Params**:
-- ``id`` : user id
+- ``id`` : category id
 
 <br><hr><br>
-
 
 ## ``JSON`` Response Format
 

@@ -1,6 +1,6 @@
 # **Get List Of Users**
 
-## GET ``/v1/users``
+## GET ``/api/v1/users``
 
 **GET Query Params**:
 - ``search`` : search keyword (search-fields: fullnames|emails|mobiles)

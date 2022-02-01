@@ -1,9 +1,9 @@
-# **Get List Of Categories**
+# **Get List Of quizzes**
 
-## GET ``/api/v1/categories``
+## GET ``/api/v1/quizzes``
 
 **GET Query Params**:
-- ``search`` : search keyword (search-fields: slug|name)
+- ``search`` : search keyword (search-fields: title)
 - ``page`` : page number
 - ``pagesize`` : number of records in page (default:20)
 

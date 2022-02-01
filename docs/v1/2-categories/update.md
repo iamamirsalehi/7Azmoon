@@ -1,6 +1,6 @@
-# **Create New Category**
+# **Update Category**
 
-## POST ``/api/v1/categories``
+## PUT ``/api/v1/categories``
 
 **POST Params**:
 - ``id`` : category id
@@ -15,6 +15,6 @@
 {
     "success" : false ,   // boolean
     "message" : "",       // string
-    "data" : {},          // created category data
+    "data" : {},          // updated category data
 }
 ```

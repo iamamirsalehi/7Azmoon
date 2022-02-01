@@ -1,12 +1,11 @@
-# **Get List Of Users**
+# **Delete Single answerSheet**
 
-## DELETE ``/api/v1/users``
+## DELETE ``/api/v1/answer-sheets``
 
 **Query Params**:
-- ``id`` : user id
+- ``id`` : answerSheet id
 
 <br><hr><br>
-
 
 ## ``JSON`` Response Format
 
