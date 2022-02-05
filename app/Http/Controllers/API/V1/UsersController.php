@@ -21,8 +21,12 @@ class UsersController extends Controller
             'password' => 'required',
         ]);
 
-        $request->password = app('hash')->make($request->password);
-        $this->userRepository->create($request->toArray());
+        $this->userRepository->create([[
+            'full_name' => $request->full_name,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'password' => app('hash')->make($request->password),
+        ]]);
 
         return response()->json(
             [
