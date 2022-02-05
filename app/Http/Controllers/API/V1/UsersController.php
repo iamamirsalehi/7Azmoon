@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\API\contracts\APIController;
 use App\repositories\Contracts\UserRepositoryInterface;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class UsersController extends APIController
 {
     public function __construct(private UserRepositoryInterface $userRepository)
     {
@@ -28,17 +28,11 @@ class UsersController extends Controller
             'password' => app('hash')->make($request->password),
         ]]);
 
-        return response()->json(
-            [
-                'success' => true,
-                'message' => 'کاربر با موفقیت ایجاد شد',
-                'data' => [
-                    'full_name' => $request->full_name,
-                    'email' => $request->email,
-                    'mobile' => $request->mobile,
-                    'password' => $request->password,
-                ],
-            ]
-        )->setStatusCode(201);
+        return $this->respondCreated('کاربر با موفقیت ایجاد شد',[
+            'full_name' => $request->full_name,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'password' => $request->password,
+        ]);
     }
 }
