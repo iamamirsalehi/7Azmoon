@@ -21,12 +21,12 @@ class UsersController extends APIController
             'password' => 'required',
         ]);
 
-        $this->userRepository->create([[
+        $this->userRepository->create([
             'full_name' => $request->full_name,
             'email' => $request->email,
             'mobile' => $request->mobile,
             'password' => app('hash')->make($request->password),
-        ]]);
+        ]);
 
         return $this->respondCreated('کاربر با موفقیت ایجاد شد',[
             'full_name' => $request->full_name,
