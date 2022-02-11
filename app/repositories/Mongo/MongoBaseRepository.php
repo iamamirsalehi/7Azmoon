@@ -22,9 +22,14 @@ class MongoBaseRepository implements RepositoryInterface
         // TODO: Implement all() method.
     }
 
-    public function delete(array $where)
+    public function delete(int $id)
     {
         // TODO: Implement delete() method.
+    }
+
+    public function deleteBy(array $where)
+    {
+        // TODO: Implement deleteBy() method.
     }
 
     public function find(int $id)

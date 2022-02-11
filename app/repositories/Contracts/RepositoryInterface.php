@@ -10,7 +10,9 @@ interface RepositoryInterface
 
     public function all(array $where);
 
-    public function delete(array $where);
+    public function deleteBy(array $where);
+
+    public function delete(int $id);
 
     public function find(int $id);
 }
