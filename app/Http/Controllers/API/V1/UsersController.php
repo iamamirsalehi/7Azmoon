@@ -57,4 +57,24 @@ class UsersController extends APIController
             'mobile' => $request->mobile,
         ]);
     }
+
+    public function updatePassword(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required',
+            'password' => 'min:6|required_with:password_repeat|same:password_repeat',
+            'password_repeat' => 'min:6',
+        ]);
+
+        $this->userRepository->update($request->id, [
+           'password' => app('hash')->make($request->password),
+        ]);
+
+        return $this->respondSuccess('رمز عبور شما با موفقیت بروزرسانی شد', [
+            'full_name' => $request->full_name,
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+        ]);
+    }
+
 }

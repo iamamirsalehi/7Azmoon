@@ -60,4 +60,24 @@ class UsersTest extends \TestCase
 
         $this->assertEquals(422, $response->status());
     }
+
+    public function test_should_update_password()
+    {
+        $response = $this->call('PUT', 'api/v1/users/change-password', [
+            'id' => '205',
+            'password' => '1234567890',
+            'password_repeat' => '1234567890',
+        ]);
+
+        $this->assertEquals(200, $response->status());
+        $this->seeJsonStructure([
+            'success',
+            'message',
+            'data' => [
+                'full_name',
+                'email',
+                'mobile',
+            ],
+        ]);
+    }
 }
