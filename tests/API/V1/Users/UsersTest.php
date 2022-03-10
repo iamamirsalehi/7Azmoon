@@ -88,7 +88,6 @@ class UsersTest extends \TestCase
         $this->assertEquals(422, $response->status());
     }
 
-
     public function test_should_delete_a_user()
     {
         $response = $this->call('DELETE', 'api/v1/users', [
