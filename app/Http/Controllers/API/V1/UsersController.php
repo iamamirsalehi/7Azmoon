@@ -12,6 +12,19 @@ class UsersController extends APIController
     {
     }
 
+    public function index(Request $request)
+    {
+        $this->validate($request, [
+            'search' => 'nullable|string',
+            'page' => 'required|numeric',
+            'pagesize' => 'nullable|numeric',
+        ]);
+
+        $users = $this->userRepository->paginate($request->search, $request->page, $request->pagesize ?? 20);
+
+        return $this->respondSuccess('کابران', $users);
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -28,7 +41,7 @@ class UsersController extends APIController
             'password' => app('hash')->make($request->password),
         ]);
 
-        return $this->respondCreated('کاربر با موفقیت ایجاد شد',[
+        return $this->respondCreated('کاربر با موفقیت ایجاد شد', [
             'full_name' => $request->full_name,
             'email' => $request->email,
             'mobile' => $request->mobile,
@@ -67,7 +80,7 @@ class UsersController extends APIController
         ]);
 
         $this->userRepository->update($request->id, [
-           'password' => app('hash')->make($request->password),
+            'password' => app('hash')->make($request->password),
         ]);
 
         return $this->respondSuccess('رمز عبور شما با موفقیت بروزرسانی شد', [

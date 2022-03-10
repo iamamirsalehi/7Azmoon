@@ -15,4 +15,6 @@ interface RepositoryInterface
     public function delete(int $id);
 
     public function find(int $id);
+
+    public function paginate(string $search = null, int $page, int $pagesize = 20);
 }

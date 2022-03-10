@@ -101,4 +101,44 @@ class UsersTest extends \TestCase
             'data',
         ]);
     }
+
+    public function test_should_get_users()
+    {
+        $pagesize = 3;
+
+        $response = $this->call('GET', 'api/v1/users', [
+            'page' => 1,
+            'pagesize' => $pagesize,
+        ]);
+
+        $data = json_decode($response->getContent(), true);
+
+        $this->assertEquals($pagesize, count($data['data']));
+        $this->assertEquals(200, $response->status());
+        $this->seeJsonStructure([
+            'success',
+            'message',
+            'data',
+        ]);
+    }
+
+    public function test_should_get_filtered_users()
+    {
+        $pagesize = 3;
+        $userEmail = 'isamirsalehi@gmail.com';
+        $response = $this->call('GET', 'api/v1/users', [
+            'search' => $userEmail,
+            'page' => 1,
+            'pagesize' => $pagesize,
+        ]);
+
+        $data = json_decode($response->getContent(), true);
+        $this->assertEquals($data['data']['email'], $userEmail);
+        $this->assertEquals(200, $response->status());
+        $this->seeJsonStructure([
+            'success',
+            'message',
+            'data',
+        ]);
+    }
 }
