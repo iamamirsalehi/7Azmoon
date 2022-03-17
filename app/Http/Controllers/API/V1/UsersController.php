@@ -34,7 +34,7 @@ class UsersController extends APIController
             'password' => 'required',
         ]);
 
-        $this->userRepository->create([
+        $newUser = $this->userRepository->create([
             'full_name' => $request->full_name,
             'email' => $request->email,
             'mobile' => $request->mobile,
@@ -42,10 +42,10 @@ class UsersController extends APIController
         ]);
 
         return $this->respondCreated('کاربر با موفقیت ایجاد شد', [
-            'full_name' => $request->full_name,
-            'email' => $request->email,
-            'mobile' => $request->mobile,
-            'password' => $request->password,
+            'full_name' => $newUser->getFullName(),
+            'email' => $newUser->getEmail(),
+            'mobile' => $newUser->getMobile(),
+            'password' => $newUser->getPassword(),
         ]);
     }
 
@@ -96,7 +96,10 @@ class UsersController extends APIController
             'id' => 'required',
         ]);
 
-        $this->userRepository->delete($request->id);
+//        $this->userRepository->delete($request->id);
+
+        $user = $this->userRepository->find($request->id);
+        dd($user->getId(), $user->getEmail());
 
         return $this->respondSuccess('کاربر باموفقیت حذف شد', []);
     }
