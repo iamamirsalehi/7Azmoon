@@ -1,14 +1,13 @@
-# **Get List Of Users**
+# **Get List Of Categories**
 
-## GET ``/api/v1/users``
+## GET ``/api/v1/categories``
 
 **GET Query Params**:
-- ``search`` : search keyword (search-fields: fullnames|emails|mobiles)
+- ``search`` : search keyword (search-fields: slug|name)
 - ``page`` : page number
 - ``pagesize`` : number of records in page (default:20)
 
 <br><hr><br>
-
 
 ## ``JSON`` Response Format
 

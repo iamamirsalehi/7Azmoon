@@ -1,6 +1,6 @@
 # **Get List Of Users**
 
-## PUT ``/v1/users``
+## PUT ``/api/v1/users``
 
 **POST Params**:
 - ``id`` : user id
