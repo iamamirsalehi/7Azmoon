@@ -8,7 +8,7 @@ class UserEloquentEntity implements UserEntity
 {
     private $user;
 
-    public function __construct(User $user)
+    public function __construct(User|null $user)
     {
         $this->user = $user;
     }
