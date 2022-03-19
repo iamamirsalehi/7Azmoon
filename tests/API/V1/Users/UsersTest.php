@@ -14,14 +14,16 @@ class UsersTest extends \TestCase
 
     public function test_should_create_a_new_user()
     {
-        $response = $this->call('POST', 'api/v1/users', [
+        $newUser = [
             'full_name' => 'Amir Salehi',
             'email' => 'isamirsalehi@gmail.com',
             'mobile' => '09121112222',
             'password' => '123456',
-        ]);
+        ];
+        $response = $this->call('POST', 'api/v1/users', $newUser);
 
         $this->assertEquals(201, $response->status());
+//        $this->seeInDatabase('users', $newUser);
         $this->seeJsonStructure([
             'success',
             'message',
