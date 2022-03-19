@@ -13,6 +13,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     });
 
     $router->group(['prefix' => 'categories'], function () use ($router) {
+        $router->get('', 'API\V1\CategoriesController@index');
         $router->post('', 'API\V1\CategoriesController@store');
         $router->delete('', 'API\V1\CategoriesController@delete');
         $router->put('', 'API\V1\CategoriesController@update');

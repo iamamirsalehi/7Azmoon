@@ -12,6 +12,19 @@ class CategoriesController extends APIController
     {
     }
 
+    public function index(Request $request)
+    {
+        $this->validate($request, [
+            'search' => 'nullable|string',
+            'page' => 'required|numeric',
+            'pagesize' => 'nullable|numeric',
+        ]);
+
+        $categories = $this->categoryRepository->paginate($request->search, $request->page, $request->pagesize ?? 20, ['name', 'slug']);
+
+        return $this->respondSuccess('دسته بندی ها', $categories);
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [
