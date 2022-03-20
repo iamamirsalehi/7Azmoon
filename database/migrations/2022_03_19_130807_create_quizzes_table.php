@@ -20,7 +20,7 @@ class CreateQuizzesTable extends Migration
             $table->text('description')->nullable();
             $table->date('start_date');
             $table->timestamp('duration');
-
+            $table->boolean('is_active')->default(true);
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 

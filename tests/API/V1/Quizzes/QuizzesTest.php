@@ -27,6 +27,7 @@ class QuizzesTest extends \TestCase
             'description' => 'this is a new quiz for test',
             'start_date' => $startDate,
             'duration' => $duration->addMinutes(60),
+            'is_active' => true,
         ];
 
         $response = $this->call('POST', 'api/v1/quizzes', $quizData);
@@ -88,7 +89,6 @@ class QuizzesTest extends \TestCase
         ]);
     }
 
-
     public function test_ensure_we_can_get_filtered_quiz()
     {
         $this->createQuiz(30);
@@ -125,6 +125,46 @@ class QuizzesTest extends \TestCase
             'success',
             'message',
             'data',
+        ]);
+    }
+
+    public function test_ensure_we_can_update_a_quiz()
+    {
+        $quiz = $this->createQuiz()[0];
+        $category = $this->createCategories()[0];
+        $startDate = Carbon::now()->addDay();
+        $duration = Carbon::now()->addDay();
+
+        $quizData = [
+            'id' => $quiz->getId(),
+            'category_id' => $category->getId(),
+            'title' => 'quiz updated',
+            'description' => 'this is a updated quiz for test',
+            'start_date' => $startDate,
+            'duration' => $duration->addMinutes(60),
+            'is_active' => false,
+        ];
+
+        $response = $this->call('PUT', 'api/v1/quizzes', $quizData);
+
+        $data = json_decode($response->getContent(), true)['data'];
+
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $this->assertEquals($data['title'], $quizData['title']);
+        $this->assertEquals($data['description'], $quizData['description']);
+        $this->assertEquals($data['is_active'], $quizData['is_active']);
+        $this->seeJsonStructure([
+            'success',
+            'message',
+            'data' => [
+                'category_id',
+                'title',
+                'description',
+                'duration',
+                'start_date',
+                'is_active'
+            ],
         ]);
     }
 
