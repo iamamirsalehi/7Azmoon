@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\API\contracts\APIController;
+use App\Models\Quiz;
 use App\repositories\Contracts\QuizRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,6 +12,19 @@ class QuizzesController extends APIController
 {
     public function __construct(private QuizRepositoryInterface $quizRepository)
     {
+    }
+
+    public function index(Request $request)
+    {
+        $this->validate($request, [
+            'search' => 'nullable|string',
+            'page' => 'required|numeric',
+            'pagesize' => 'nullable|numeric',
+        ]);
+
+        $quizzes = $this->quizRepository->paginate($request->search, $request->page, $request->pagesize ?? 0, ['title', 'description', 'start_date', 'duration']);
+
+        return $this->respondSuccess('آزمون ها', $quizzes);
     }
 
     public function store(Request $request)

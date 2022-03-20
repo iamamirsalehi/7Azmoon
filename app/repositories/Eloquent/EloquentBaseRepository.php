@@ -2,6 +2,7 @@
 
 namespace App\repositories\Eloquent;
 
+use App\Models\Quiz;
 use App\repositories\Contracts\RepositoryInterface;
 
 class EloquentBaseRepository implements RepositoryInterface
@@ -63,6 +64,6 @@ class EloquentBaseRepository implements RepositoryInterface
             $modelQuery->orWhere($value, $search);
         }
 
-        return $this->model::paginate($pagesize, $columns, null, $page)->toArray()['data'];
+        return $modelQuery->paginate($pagesize, $columns, null, $page)->toArray()['data'];
     }
 }
