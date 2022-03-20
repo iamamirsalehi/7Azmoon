@@ -116,22 +116,4 @@ class CategoriesTest extends \TestCase
             'data',
         ]);
     }
-
-    private function createCategories(int $count = 1): array
-    {
-        $categoryRepository = $this->app->make(CategoryRepositoryInterface::class);
-
-        $newCategory = [
-            'name' => 'new category',
-            'slug' => 'new-category',
-        ];
-
-        $categories = [];
-
-        foreach (range(0, $count) as $item) {
-            $categories[] = $categoryRepository->create($newCategory);
-        }
-
-        return $categories;
-    }
 }
